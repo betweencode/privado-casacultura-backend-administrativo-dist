@@ -18,7 +18,7 @@ async function bootstrap() {
         viewExt: 'hbs',
         templates: (0, path_1.join)(__dirname, '..', 'views'),
     });
-    await app.listen(80);
+    await app.listen(8080);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
