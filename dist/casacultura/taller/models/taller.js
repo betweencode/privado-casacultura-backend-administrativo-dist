@@ -15,7 +15,7 @@ const typeorm_1 = require("typeorm");
 let Taller = class Taller {
 };
 __decorate([
-    (0, typeorm_1.PrimaryColumn)({ name: "id_taller" }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: "id_taller" }),
     __metadata("design:type", Number)
 ], Taller.prototype, "idTaller", void 0);
 __decorate([

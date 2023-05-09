@@ -26,7 +26,7 @@ let RolesService = class RolesService {
         this.rolesRepository = rolesRepository;
     }
     async getAll() {
-        return null;
+        return await this.rolesRepository.find();
     }
     async getById(idRol) {
         const aux = await this.rolesRepository.findOne({ relations: { permisosxsubmodulos: { permiso: true, submodulo: true, modulo: true } }, where: { id: idRol, esActivo: true } });

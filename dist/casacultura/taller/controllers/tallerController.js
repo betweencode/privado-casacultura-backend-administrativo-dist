@@ -8,10 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TallerController = void 0;
 const common_1 = require("@nestjs/common");
 const tallerServices_1 = require("../services/tallerServices");
+const taller_1 = require("../models/taller");
 let TallerController = class TallerController {
     constructor(tallerPrd) {
         this.tallerPrd = tallerPrd;
@@ -19,13 +23,23 @@ let TallerController = class TallerController {
     async getAll() {
         return await this.tallerPrd.getAll();
     }
+    async guardar(request) {
+        return await this.tallerPrd.guardar(request);
+    }
 };
 __decorate([
-    (0, common_1.Get)(""),
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], TallerController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [taller_1.Taller]),
+    __metadata("design:returntype", Promise)
+], TallerController.prototype, "guardar", null);
 TallerController = __decorate([
     (0, common_1.Controller)("talleres"),
     __metadata("design:paramtypes", [tallerServices_1.TallerServices])

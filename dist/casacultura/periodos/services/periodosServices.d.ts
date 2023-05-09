@@ -4,4 +4,9 @@ export declare class PeriodosServices {
     private repository;
     constructor(repository: Repository<Periodos>);
     getAll(): Promise<Periodos[]>;
+    guardar(obj: any): Promise<{
+        resultado: boolean;
+        mensaje: string;
+        datos: any;
+    }>;
 }

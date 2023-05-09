@@ -27,7 +27,7 @@ __decorate([
     __metadata("design:type", Date)
 ], Periodos.prototype, "fecha", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "es_activo" }),
+    (0, typeorm_1.Column)({ name: "es_activo", default: true }),
     __metadata("design:type", Boolean)
 ], Periodos.prototype, "esActivo", void 0);
 __decorate([

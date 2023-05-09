@@ -8,10 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategoriaTallerController = void 0;
 const common_1 = require("@nestjs/common");
 const categoriaTallerServices_1 = require("../services/categoriaTallerServices");
+const categoriaTaller_1 = require("../models/categoriaTaller");
 let CategoriaTallerController = class CategoriaTallerController {
     constructor(categoriaTallerPrd) {
         this.categoriaTallerPrd = categoriaTallerPrd;
@@ -19,9 +23,25 @@ let CategoriaTallerController = class CategoriaTallerController {
     async getAll() {
         return await this.categoriaTallerPrd.getAll();
     }
+    async guardar(request) {
+        return await this.categoriaTallerPrd.gurdar(request);
+    }
 };
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CategoriaTallerController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [categoriaTaller_1.CategoriaTaller]),
+    __metadata("design:returntype", Promise)
+], CategoriaTallerController.prototype, "guardar", null);
 CategoriaTallerController = __decorate([
-    (0, common_1.Controller)("categoriataller"),
+    (0, common_1.Controller)("categoriastaller"),
     __metadata("design:paramtypes", [categoriaTallerServices_1.CategoriaTallerServices])
 ], CategoriaTallerController);
 exports.CategoriaTallerController = CategoriaTallerController;

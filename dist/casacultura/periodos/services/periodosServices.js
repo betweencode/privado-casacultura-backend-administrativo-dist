@@ -24,6 +24,19 @@ let PeriodosServices = class PeriodosServices {
     async getAll() {
         return await this.repository.find();
     }
+    async guardar(obj) {
+        const resultado = { resultado: false, mensaje: "No se pudo guardar el registor", datos: undefined };
+        try {
+            const data = await this.repository.save(obj);
+            resultado.mensaje = "Registro guardado con exito";
+            resultado.resultado = true;
+            resultado.datos = data;
+        }
+        catch (e) {
+            console.log(e);
+        }
+        return resultado;
+    }
 };
 PeriodosServices = __decorate([
     (0, common_1.Injectable)(),
