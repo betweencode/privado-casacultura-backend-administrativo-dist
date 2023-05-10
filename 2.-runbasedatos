@@ -1,0 +1,9 @@
+docker run -d \
+    --name casadb \
+    -e POSTGRES_PASSWORD=12345 \
+    -e POSTGRES_DB=casaculturadb \
+    -e POSTGRES_USER=usurioprincipal \
+    -v ${PWD}/datos:/var/lib/postgresql/data \
+    --network infra \
+    -p 3333:5432 \
+    postgres
