@@ -34,11 +34,11 @@ AppModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
-                host: 'localhost',
+                host: '192.168.0.1',
                 port: 5432,
-                username: 'postgres',
+                username: 'usuarioprincipal',
                 password: '12345',
-                database: 'administracion',
+                database: 'casaculturadb',
                 entities: [Permisos_1.Permisos, Modulos_1.Modulos, Submodulos_1.Submodulos, Roles_1.Roles, RolesPermisos_1.RolesxPermisos, Usuarios_1.Usuarios, Empresas_1.Empresas, Versiones_1.Versiones, Versionesxmodulos_1.Versionesxmodulos, personas_1.Personas,
                     categoriaTaller_1.CategoriaTaller, taller_1.Taller, periodo_1.Periodos],
                 synchronize: true,
