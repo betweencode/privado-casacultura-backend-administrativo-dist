@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
+const tallerPeriodoxpersona_1 = require("./casacultura/periodos/models/tallerPeriodoxpersona");
 const periodo_1 = require("./casacultura/periodos/models/periodo");
 const taller_1 = require("./casacultura/taller/models/taller");
 const casacultura_module_1 = require("./casacultura/casacultura.module");
@@ -28,6 +29,8 @@ const Empresas_1 = require("./administracion/empresa/models/Empresas");
 const ayuda_module_1 = require("./ayuda/ayuda.module");
 const categoriaTaller_1 = require("./casacultura/categoriataller/models/categoriaTaller");
 const personas_1 = require("./casacultura/personas/models/personas");
+const core_1 = require("@nestjs/core");
+const jwt_auth_guard_1 = require("./autenticacion/services/jwt-auth.guard");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -40,13 +43,18 @@ AppModule = __decorate([
                 password: '12345',
                 database: 'administracion',
                 entities: [Permisos_1.Permisos, Modulos_1.Modulos, Submodulos_1.Submodulos, Roles_1.Roles, RolesPermisos_1.RolesxPermisos, Usuarios_1.Usuarios, Empresas_1.Empresas, Versiones_1.Versiones, Versionesxmodulos_1.Versionesxmodulos, personas_1.Personas,
-                    categoriaTaller_1.CategoriaTaller, taller_1.Taller, periodo_1.Periodos],
+                    categoriaTaller_1.CategoriaTaller, taller_1.Taller, periodo_1.Periodos, tallerPeriodoxpersona_1.TallerPeriodoxPersona],
                 synchronize: true,
             }),
             catalogos_module_1.CatalogosModule, administracion_module_1.AdministracionModule, autenticacion_module_1.AutenticacionModule, ayuda_module_1.AyudaModule, versiones_module_1.VersionesModule, casacultura_module_1.CasaculturaModule],
         controllers: [],
         exports: [],
-        providers: []
+        providers: [
+            {
+                provide: core_1.APP_GUARD,
+                useClass: jwt_auth_guard_1.JwtAuthGuard,
+            }
+        ]
     })
 ], AppModule);
 exports.AppModule = AppModule;

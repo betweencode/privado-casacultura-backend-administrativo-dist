@@ -24,6 +24,10 @@ let PeriodosServices = class PeriodosServices {
     async getAll() {
         return await this.repository.find();
     }
+    async getAllactivos() {
+        const resultado = await this.repository.findOne({ where: { esActivo: true } });
+        return resultado;
+    }
     async guardar(obj) {
         const resultado = { resultado: false, mensaje: "No se pudo guardar el registor", datos: undefined };
         try {

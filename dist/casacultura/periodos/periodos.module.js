@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PeridosModule = void 0;
+const tallerPeriodoxpersona_1 = require("./models/tallerPeriodoxpersona");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const periodo_1 = require("./models/periodo");
@@ -16,7 +17,7 @@ let PeridosModule = class PeridosModule {
 };
 PeridosModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([periodo_1.Periodos])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([periodo_1.Periodos, tallerPeriodoxpersona_1.TallerPeriodoxPersona])],
         controllers: [periodosController_1.PeriodosController],
         providers: [periodosServices_1.PeriodosServices],
         exports: [typeorm_1.TypeOrmModule],

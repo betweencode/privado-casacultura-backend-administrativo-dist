@@ -4,6 +4,7 @@ export declare class PeriodosController {
     private periodoPrd;
     constructor(periodoPrd: PeriodosServices);
     getAll(): Promise<Periodos[]>;
+    getAllActivos(): Promise<Periodos>;
     guardar(request: Periodos): Promise<{
         resultado: boolean;
         mensaje: string;

@@ -42,8 +42,9 @@ let AutenticacionServices = class AutenticacionServices {
     }
     async login(user) {
         const rol = await this.rolesPrd.getById(user.rol.id);
+        const { id } = user, nuevo = __rest(user, ["id"]);
         const { permisosxsubmodulos } = rol, cargar = __rest(rol, ["permisosxsubmodulos"]);
-        const payload = { correo: user.correo, nombre: user.nombre, rol: cargar };
+        const payload = Object.assign(Object.assign({}, nuevo), { rol: cargar });
         return {
             access_token: this.jwtService.sign(payload),
         };

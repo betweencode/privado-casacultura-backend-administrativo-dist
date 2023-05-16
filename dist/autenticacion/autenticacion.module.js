@@ -16,6 +16,7 @@ const constants_1 = require("./contants/constants");
 const autenticacionController_1 = require("./controllers/autenticacionController");
 const autenticacionServices_1 = require("./services/autenticacionServices");
 const local_strategy_1 = require("./services/local.strategy");
+const jwt_strategy_1 = require("./services/jwt.strategy");
 let AutenticacionModule = class AutenticacionModule {
 };
 AutenticacionModule = __decorate([
@@ -23,9 +24,10 @@ AutenticacionModule = __decorate([
         controllers: [autenticacionController_1.AutenticacionController],
         imports: [passport_1.PassportModule, usuarios_module_1.UsuariosModule, jwt_1.JwtModule.register({
                 secret: constants_1.jwtConstants.secret,
-                signOptions: { expiresIn: '60s' },
+                signOptions: { expiresIn: '3600s' }
             }), roles_module_1.RolesModule],
-        providers: [autenticacionServices_1.AutenticacionServices, local_strategy_1.LocalStrategy]
+        providers: [autenticacionServices_1.AutenticacionServices, local_strategy_1.LocalStrategy, jwt_strategy_1.JwtStrategy],
+        exports: [autenticacionServices_1.AutenticacionServices]
     })
 ], AutenticacionModule);
 exports.AutenticacionModule = AutenticacionModule;

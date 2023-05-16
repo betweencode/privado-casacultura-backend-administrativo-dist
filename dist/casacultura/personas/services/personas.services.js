@@ -13,22 +13,45 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PersonasServices = void 0;
+const personas_1 = require("./../models/personas");
+const Usuarios_1 = require("./../../../administracion/usuarios/models/Usuarios");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const personas_1 = require("../models/personas");
 const typeorm_2 = require("typeorm");
 let PersonasServices = class PersonasServices {
-    constructor(repository) {
+    constructor(repository, repositoryUsuarios) {
         this.repository = repository;
+        this.repositoryUsuarios = repositoryUsuarios;
     }
     async getAll() {
         return await this.repository.find();
+    }
+    async getTalleresPorPeriodoPersona(usuario) {
+        const tablaDetalle = await this.repositoryUsuarios.findOne({ where: { correo: usuario, personas: { detallePeriodoPersonas: { periodos: { esActivo: true } } } }, relations: { personas: { detallePeriodoPersonas: { talleres: true } } } });
+        const personasPorPeriodo = tablaDetalle && tablaDetalle.personas ? tablaDetalle.personas : [];
+        return personasPorPeriodo;
+    }
+    async getPersonasSesion(usuario) {
+        const usuarioencontrado = await this.repositoryUsuarios.findOne({ where: {
+                correo: usuario
+            }, relations: {
+                personas: true
+            } });
+        const personas = usuarioencontrado.personas || [];
+        return personas;
+    }
+    async guardarPersona(username, persona) {
+        const usuario = await this.repositoryUsuarios.findOne({ where: { correo: username } });
+        persona.usuario = usuario;
+        return await this.repository.save(persona);
     }
 };
 PersonasServices = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(personas_1.Personas)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(1, (0, typeorm_1.InjectRepository)(Usuarios_1.Usuarios)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository])
 ], PersonasServices);
 exports.PersonasServices = PersonasServices;
 //# sourceMappingURL=personas.services.js.map

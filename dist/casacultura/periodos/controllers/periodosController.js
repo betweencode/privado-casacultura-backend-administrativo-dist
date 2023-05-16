@@ -23,6 +23,9 @@ let PeriodosController = class PeriodosController {
     async getAll() {
         return await this.periodoPrd.getAll();
     }
+    async getAllActivos() {
+        return await this.periodoPrd.getAllactivos();
+    }
     async guardar(request) {
         return await this.periodoPrd.guardar(request);
     }
@@ -33,6 +36,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], PeriodosController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Get)("activos"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], PeriodosController.prototype, "getAllActivos", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

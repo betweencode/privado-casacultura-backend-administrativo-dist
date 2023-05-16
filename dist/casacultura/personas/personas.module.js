@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PersonasModule = void 0;
+const Usuarios_1 = require("./../../administracion/usuarios/models/Usuarios");
 const typeorm_1 = require("@nestjs/typeorm");
 const common_1 = require("@nestjs/common");
 const personasController_1 = require("./controllers/personasController");
@@ -18,8 +19,8 @@ PersonasModule = __decorate([
     (0, common_1.Module)({
         controllers: [personasController_1.PersonasController],
         providers: [personas_services_1.PersonasServices],
-        imports: [typeorm_1.TypeOrmModule.forFeature([personas_1.Personas])],
-        exports: [typeorm_1.TypeOrmModule]
+        imports: [typeorm_1.TypeOrmModule.forFeature([personas_1.Personas, Usuarios_1.Usuarios])],
+        exports: [typeorm_1.TypeOrmModule, personas_services_1.PersonasServices]
     })
 ], PersonasModule);
 exports.PersonasModule = PersonasModule;

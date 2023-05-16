@@ -10,7 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Personas = void 0;
-const periodo_1 = require("./../../periodos/models/periodo");
+const tallerPeriodoxpersona_1 = require("./../../periodos/models/tallerPeriodoxpersona");
+const Usuarios_1 = require("./../../../administracion/usuarios/models/Usuarios");
 const typeorm_1 = require("typeorm");
 let Personas = class Personas {
 };
@@ -27,7 +28,7 @@ __decorate([
     __metadata("design:type", String)
 ], Personas.prototype, "primerApellido", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "segundo_apellido" }),
+    (0, typeorm_1.Column)({ name: "segundo_apellido", default: "" }),
     __metadata("design:type", String)
 ], Personas.prototype, "segundoApellido", void 0);
 __decorate([
@@ -39,7 +40,7 @@ __decorate([
     __metadata("design:type", String)
 ], Personas.prototype, "curp", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "es_tutor" }),
+    (0, typeorm_1.Column)({ name: "es_tutor", default: false }),
     __metadata("design:type", Boolean)
 ], Personas.prototype, "esTutor", void 0);
 __decorate([
@@ -47,7 +48,7 @@ __decorate([
     __metadata("design:type", String)
 ], Personas.prototype, "genero", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ default: "" }),
     __metadata("design:type", String)
 ], Personas.prototype, "foto", void 0);
 __decorate([
@@ -57,19 +58,23 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Personas.prototype, "domicilio", void 0);
+], Personas.prototype, "calle", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: "numero_interior" }),
+    __metadata("design:type", String)
+], Personas.prototype, "numeroInterior", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: "numero_exterior" }),
+    __metadata("design:type", String)
+], Personas.prototype, "numeroExterior", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Personas.prototype, "municipio", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Personas.prototype, "codigopostal", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Personas.prototype, "discapacidad", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Personas.prototype, "tipoSangre", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -79,10 +84,33 @@ __decorate([
     __metadata("design:type", String)
 ], Personas.prototype, "movil", void 0);
 __decorate([
-    (0, typeorm_1.ManyToMany)(() => periodo_1.Periodos, periodos => periodos.idPeriodo),
-    (0, typeorm_1.JoinTable)({ name: "detalle_personasxperiodo", joinColumn: { name: "id_persona" }, inverseJoinColumn: { name: "id_periodo" } }),
+    (0, typeorm_1.Column)({ name: "url_foto_identificacionofical", default: "" }),
+    __metadata("design:type", String)
+], Personas.prototype, "urlFotoIdentificacionofical", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: "estado_civil", default: "" }),
+    __metadata("design:type", String)
+], Personas.prototype, "estadoCivil", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => Usuarios_1.Usuarios),
+    __metadata("design:type", Usuarios_1.Usuarios)
+], Personas.prototype, "usuario", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => tallerPeriodoxpersona_1.TallerPeriodoxPersona, per => per.personas),
     __metadata("design:type", Array)
-], Personas.prototype, "periodossuscritos", void 0);
+], Personas.prototype, "detallePeriodoPersonas", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: "" }),
+    __metadata("design:type", String)
+], Personas.prototype, "discapacidad", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: "" }),
+    __metadata("design:type", String)
+], Personas.prototype, "alergia", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Personas.prototype, "tipoSangre", void 0);
 Personas = __decorate([
     (0, typeorm_1.Entity)()
 ], Personas);

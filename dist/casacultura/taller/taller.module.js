@@ -12,11 +12,12 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const tallerController_1 = require("./controllers/tallerController");
 const tallerServices_1 = require("./services/tallerServices");
+const personas_module_1 = require("../personas/personas.module");
 let TallerModule = class TallerModule {
 };
 TallerModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([taller_1.Taller])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([taller_1.Taller]), personas_module_1.PersonasModule],
         controllers: [tallerController_1.TallerController],
         providers: [tallerServices_1.TallerServices],
         exports: [typeorm_1.TypeOrmModule]

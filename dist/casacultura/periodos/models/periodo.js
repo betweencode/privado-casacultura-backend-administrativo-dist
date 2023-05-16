@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Periodos = void 0;
-const taller_1 = require("./../../taller/models/taller");
 const typeorm_1 = require("typeorm");
 let Periodos = class Periodos {
 };
@@ -30,11 +29,6 @@ __decorate([
     (0, typeorm_1.Column)({ name: "es_activo", default: true }),
     __metadata("design:type", Boolean)
 ], Periodos.prototype, "esActivo", void 0);
-__decorate([
-    (0, typeorm_1.ManyToMany)(() => taller_1.Taller, taller => taller.idTaller),
-    (0, typeorm_1.JoinTable)({ name: "detalle_periodoxtaller", joinColumn: { name: "id_periodo" }, inverseJoinColumn: { name: "id_taller" } }),
-    __metadata("design:type", Array)
-], Periodos.prototype, "talleres", void 0);
 Periodos = __decorate([
     (0, typeorm_1.Entity)()
 ], Periodos);

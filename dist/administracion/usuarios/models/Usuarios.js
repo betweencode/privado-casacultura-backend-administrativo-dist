@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Usuarios = void 0;
+const personas_1 = require("./../../../casacultura/personas/models/personas");
 const Roles_1 = require("../../../catalogos/roles/models/Roles");
 const typeorm_1 = require("typeorm");
 let Usuarios = class Usuarios {
@@ -56,6 +57,10 @@ __decorate([
     (0, typeorm_1.JoinColumn)({ name: "id_rol" }),
     __metadata("design:type", Roles_1.Roles)
 ], Usuarios.prototype, "rol", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => personas_1.Personas, person => person.usuario),
+    __metadata("design:type", Array)
+], Usuarios.prototype, "personas", void 0);
 Usuarios = __decorate([
     (0, typeorm_1.Entity)()
 ], Usuarios);

@@ -1,3 +1,4 @@
+import { Personas } from './../../../casacultura/personas/models/personas';
 import { Roles } from "../../../catalogos/roles/models/Roles";
 export declare class Usuarios {
     id: number;
@@ -10,4 +11,5 @@ export declare class Usuarios {
     password: string;
     esActivo: boolean;
     rol: Roles;
+    personas: Personas[];
 }

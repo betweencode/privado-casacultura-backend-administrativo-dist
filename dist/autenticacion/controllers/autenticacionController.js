@@ -18,6 +18,7 @@ const Usuarios_1 = require("./../../administracion/usuarios/models/Usuarios");
 const common_1 = require("@nestjs/common");
 const passport_1 = require("@nestjs/passport");
 const autenticacionServices_1 = require("../services/autenticacionServices");
+const constants_1 = require("../contants/constants");
 let AutenticacionController = class AutenticacionController {
     constructor(authServices, usuariosPrd) {
         this.authServices = authServices;
@@ -32,6 +33,7 @@ let AutenticacionController = class AutenticacionController {
     }
 };
 __decorate([
+    (0, constants_1.Public)(),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('local')),
     (0, common_1.Post)("login"),
     __param(0, (0, common_1.Request)()),

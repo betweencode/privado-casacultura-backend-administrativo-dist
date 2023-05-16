@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ModulosController = void 0;
+const constants_1 = require("./../../../autenticacion/contants/constants");
 const common_1 = require("@nestjs/common");
 const modulosServices_1 = require("../services/modulosServices");
 let ModulosController = class ModulosController {
@@ -27,6 +28,7 @@ let ModulosController = class ModulosController {
     }
 };
 __decorate([
+    (0, constants_1.Public)(),
     (0, common_1.Get)("modulos"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),

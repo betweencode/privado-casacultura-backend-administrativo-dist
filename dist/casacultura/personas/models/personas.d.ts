@@ -1,4 +1,5 @@
-import { Periodos } from './../../periodos/models/periodo';
+import { TallerPeriodoxPersona } from './../../periodos/models/tallerPeriodoxpersona';
+import { Usuarios } from './../../../administracion/usuarios/models/Usuarios';
 export declare class Personas {
     idPersona: number;
     nombre: string;
@@ -10,11 +11,18 @@ export declare class Personas {
     genero: string;
     foto: string;
     entidad: string;
-    domicilio: string;
+    calle: string;
+    numeroInterior: string;
+    numeroExterior: string;
+    municipio: string;
     codigopostal: string;
-    discapacidad: string;
-    tipoSangre: string;
     telefono: string;
     movil: string;
-    periodossuscritos: Periodos[];
+    urlFotoIdentificacionofical: string;
+    estadoCivil: string;
+    usuario: Usuarios;
+    detallePeriodoPersonas: TallerPeriodoxPersona[];
+    discapacidad: string;
+    alergia: string;
+    tipoSangre: string;
 }
