@@ -16,6 +16,7 @@ exports.PeriodosController = void 0;
 const common_1 = require("@nestjs/common");
 const periodosServices_1 = require("../services/periodosServices");
 const periodo_1 = require("../models/periodo");
+const tallerPeriodoxpersona_1 = require("../models/tallerPeriodoxpersona");
 let PeriodosController = class PeriodosController {
     constructor(periodoPrd) {
         this.periodoPrd = periodoPrd;
@@ -28,6 +29,9 @@ let PeriodosController = class PeriodosController {
     }
     async guardar(request) {
         return await this.periodoPrd.guardar(request);
+    }
+    async guardarPersonaPeriodo(request) {
+        return await this.periodoPrd.guardarDatosAlumnoTaller(request);
     }
 };
 __decorate([
@@ -49,6 +53,13 @@ __decorate([
     __metadata("design:paramtypes", [periodo_1.Periodos]),
     __metadata("design:returntype", Promise)
 ], PeriodosController.prototype, "guardar", null);
+__decorate([
+    (0, common_1.Post)("guardarTaller"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [tallerPeriodoxpersona_1.TallerPeriodoxPersona]),
+    __metadata("design:returntype", Promise)
+], PeriodosController.prototype, "guardarPersonaPeriodo", null);
 PeriodosController = __decorate([
     (0, common_1.Controller)("periodos"),
     __metadata("design:paramtypes", [periodosServices_1.PeriodosServices])

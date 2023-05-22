@@ -1,8 +1,12 @@
+import { PersonasServices } from './../../personas/services/personas.services';
 import { Repository } from "typeorm";
 import { Periodos } from "../models/periodo";
+import { TallerPeriodoxPersona } from "../models/tallerPeriodoxpersona";
 export declare class PeriodosServices {
     private repository;
-    constructor(repository: Repository<Periodos>);
+    private repositorypersonaPeriodo;
+    private personasPrd;
+    constructor(repository: Repository<Periodos>, repositorypersonaPeriodo: Repository<TallerPeriodoxPersona>, personasPrd: PersonasServices);
     getAll(): Promise<Periodos[]>;
     getAllactivos(): Promise<Periodos>;
     guardar(obj: any): Promise<{
@@ -10,4 +14,5 @@ export declare class PeriodosServices {
         mensaje: string;
         datos: any;
     }>;
+    guardarDatosAlumnoTaller(periodoxPersona: TallerPeriodoxPersona): Promise<TallerPeriodoxPersona>;
 }

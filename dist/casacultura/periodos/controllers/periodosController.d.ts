@@ -1,5 +1,6 @@
 import { PeriodosServices } from "../services/periodosServices";
 import { Periodos } from "../models/periodo";
+import { TallerPeriodoxPersona } from "../models/tallerPeriodoxpersona";
 export declare class PeriodosController {
     private periodoPrd;
     constructor(periodoPrd: PeriodosServices);
@@ -10,4 +11,5 @@ export declare class PeriodosController {
         mensaje: string;
         datos: any;
     }>;
+    guardarPersonaPeriodo(request: TallerPeriodoxPersona): Promise<TallerPeriodoxPersona>;
 }

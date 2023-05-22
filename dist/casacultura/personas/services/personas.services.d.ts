@@ -9,4 +9,5 @@ export declare class PersonasServices {
     getTalleresPorPeriodoPersona(usuario: string): Promise<Personas[]>;
     getPersonasSesion(usuario: string): Promise<Personas[]>;
     guardarPersona(username: string, persona: Personas): Promise<Personas>;
+    getPersonaById(idPersona: number): Promise<Personas>;
 }

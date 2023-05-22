@@ -45,6 +45,9 @@ let PersonasServices = class PersonasServices {
         persona.usuario = usuario;
         return await this.repository.save(persona);
     }
+    async getPersonaById(idPersona) {
+        return await this.repository.findOne({ where: { idPersona: idPersona } });
+    }
 };
 PersonasServices = __decorate([
     (0, common_1.Injectable)(),
