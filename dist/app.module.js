@@ -39,7 +39,7 @@ AppModule = __decorate([
                 type: 'postgres',
                 host: '172.31.5.127',
                 port: 3333,
-                username: 'usurioprincipal',
+                username: 'usuarioprincipal',
                 password: '12345',
                 database: 'casaculturadb',
                 entities: [Permisos_1.Permisos, Modulos_1.Modulos, Submodulos_1.Submodulos, Roles_1.Roles, RolesPermisos_1.RolesxPermisos, Usuarios_1.Usuarios, Empresas_1.Empresas, Versiones_1.Versiones, Versionesxmodulos_1.Versionesxmodulos, personas_1.Personas,
