@@ -38,7 +38,7 @@ AppModule = __decorate([
         imports: [typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 host: 'http://172.31.5.127',
-                port: 5432,
+                port: 3333,
                 username: 'usuarioprincipal',
                 password: '12345',
                 database: 'casaculturadb',
