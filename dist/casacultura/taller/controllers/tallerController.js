@@ -26,6 +26,12 @@ let TallerController = class TallerController {
     async getAll() {
         return await this.tallerPrd.getAll();
     }
+    async getAllActivos() {
+        return await this.tallerPrd.getAllActivos();
+    }
+    async getById(id) {
+        return await this.tallerPrd.getById(id);
+    }
     async guardar(request) {
         return await this.tallerPrd.guardar(request);
     }
@@ -40,6 +46,19 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], TallerController.prototype, "getAll", null);
 __decorate([
+    (0, common_1.Get)("activos"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], TallerController.prototype, "getAllActivos", null);
+__decorate([
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], TallerController.prototype, "getById", null);
+__decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -47,7 +66,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], TallerController.prototype, "guardar", null);
 __decorate([
-    (0, common_1.Get)("periodoalumno"),
+    (0, common_1.Get)("seleccionar/periodoalumno"),
     __param(0, (0, constants_1.CurrentUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

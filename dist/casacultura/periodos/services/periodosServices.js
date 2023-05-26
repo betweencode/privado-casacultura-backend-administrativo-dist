@@ -26,15 +26,20 @@ let PeriodosServices = class PeriodosServices {
         this.personasPrd = personasPrd;
     }
     async getAll() {
-        return await this.repository.find();
+        return await this.repository.find({ order: { idPeriodo: 'desc' } });
     }
     async getAllactivos() {
-        const resultado = await this.repository.findOne({ where: { esActivo: true } });
+        const resultado = await this.repository.findOne({ where: { esActivo: true }, order: { idPeriodo: 'desc' } });
         return resultado;
     }
     async guardar(obj) {
         const resultado = { resultado: false, mensaje: "No se pudo guardar el registor", datos: undefined };
         try {
+            const periodos = (await this.repository.find({ where: { esActivo: true } })).map(s => {
+                s.esActivo = false;
+                return s;
+            });
+            this.repository.save(periodos);
             const data = await this.repository.save(obj);
             resultado.mensaje = "Registro guardado con exito";
             resultado.resultado = true;
@@ -50,6 +55,23 @@ let PeriodosServices = class PeriodosServices {
         periodoxPersona.periodos = periodo;
         periodoxPersona.proceso = "wait";
         return await this.repositorypersonaPeriodo.save(periodoxPersona);
+    }
+    async guardarDatosAlumnoTallerArreglo(periodoxPersona) {
+        const resultado = { resultado: false, mensaje: "No se pudo guardar el registor", datos: undefined };
+        const periodo = await this.repository.findOne({ where: { esActivo: true } });
+        periodoxPersona.forEach(control => {
+            control.periodos = periodo;
+            control.proceso = "wait";
+        });
+        try {
+            const data = await this.repositorypersonaPeriodo.save(periodoxPersona);
+            resultado.mensaje = "Registro guardado con exito";
+            resultado.resultado = true;
+            resultado.datos = data;
+        }
+        catch (e) {
+        }
+        return resultado;
     }
 };
 PeriodosServices = __decorate([

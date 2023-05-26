@@ -15,4 +15,9 @@ export declare class PeriodosServices {
         datos: any;
     }>;
     guardarDatosAlumnoTaller(periodoxPersona: TallerPeriodoxPersona): Promise<TallerPeriodoxPersona>;
+    guardarDatosAlumnoTallerArreglo(periodoxPersona: TallerPeriodoxPersona[]): Promise<{
+        resultado: boolean;
+        mensaje: string;
+        datos: any;
+    }>;
 }

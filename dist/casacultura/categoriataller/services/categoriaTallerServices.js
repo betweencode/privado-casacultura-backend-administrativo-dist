@@ -22,13 +22,31 @@ let CategoriaTallerServices = class CategoriaTallerServices {
         this.repository = repository;
     }
     async getAll() {
-        return await this.repository.find({ where: { esActivo: true } });
+        return await this.repository.find({ order: { idCategoriaTaller: 'asc' } });
+    }
+    async getAllActivos() {
+        return await this.repository.find({ order: { idCategoriaTaller: 'asc' }, where: { esActivo: true } });
+    }
+    async getById(idtaller) {
+        return await this.repository.findOne({ where: { idCategoriaTaller: idtaller } });
     }
     async gurdar(obj) {
         const resultado = { resultado: false, mensaje: "No se pudo guardar el registor", datos: undefined };
         try {
             const data = await this.repository.save(obj);
             resultado.mensaje = "Registro guardado con exito";
+            resultado.resultado = true;
+            resultado.datos = data;
+        }
+        catch (e) {
+        }
+        return resultado;
+    }
+    async eliminandoRegistro(id) {
+        const resultado = { resultado: false, mensaje: "No se puede eliminar el registro ya que tiene relacion con otros registros", datos: undefined };
+        try {
+            const data = await this.repository.delete({ idCategoriaTaller: id });
+            resultado.mensaje = "Registro eliminado con exito";
             resultado.resultado = true;
             resultado.datos = data;
         }

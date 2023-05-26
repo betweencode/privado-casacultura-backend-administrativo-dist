@@ -7,6 +7,8 @@ export declare class TallerController {
     private personasPrd;
     constructor(tallerPrd: TallerServices, personasPrd: PersonasServices);
     getAll(): Promise<Taller[]>;
+    getAllActivos(): Promise<Taller[]>;
+    getById(id: number): Promise<Taller>;
     guardar(request: Taller): Promise<{
         resultado: boolean;
         mensaje: string;

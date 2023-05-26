@@ -23,8 +23,17 @@ let CategoriaTallerController = class CategoriaTallerController {
     async getAll() {
         return await this.categoriaTallerPrd.getAll();
     }
+    async getAllActivos() {
+        return await this.categoriaTallerPrd.getAllActivos();
+    }
+    async getById(numero) {
+        return await this.categoriaTallerPrd.getById(numero);
+    }
     async guardar(request) {
         return await this.categoriaTallerPrd.gurdar(request);
+    }
+    async eliminar(numero) {
+        return await this.categoriaTallerPrd.eliminandoRegistro(numero);
     }
 };
 __decorate([
@@ -34,12 +43,32 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CategoriaTallerController.prototype, "getAll", null);
 __decorate([
+    (0, common_1.Get)("activos"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CategoriaTallerController.prototype, "getAllActivos", null);
+__decorate([
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], CategoriaTallerController.prototype, "getById", null);
+__decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [categoriaTaller_1.CategoriaTaller]),
     __metadata("design:returntype", Promise)
 ], CategoriaTallerController.prototype, "guardar", null);
+__decorate([
+    (0, common_1.Delete)(":id"),
+    __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], CategoriaTallerController.prototype, "eliminar", null);
 CategoriaTallerController = __decorate([
     (0, common_1.Controller)("categoriastaller"),
     __metadata("design:paramtypes", [categoriaTallerServices_1.CategoriaTallerServices])

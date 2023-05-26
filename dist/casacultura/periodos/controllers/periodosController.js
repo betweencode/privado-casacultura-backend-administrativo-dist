@@ -33,6 +33,9 @@ let PeriodosController = class PeriodosController {
     async guardarPersonaPeriodo(request) {
         return await this.periodoPrd.guardarDatosAlumnoTaller(request);
     }
+    async guardarPersonaPeriodoArreglo(request) {
+        return await this.periodoPrd.guardarDatosAlumnoTallerArreglo(request);
+    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -60,6 +63,13 @@ __decorate([
     __metadata("design:paramtypes", [tallerPeriodoxpersona_1.TallerPeriodoxPersona]),
     __metadata("design:returntype", Promise)
 ], PeriodosController.prototype, "guardarPersonaPeriodo", null);
+__decorate([
+    (0, common_1.Post)("guardarTallerArreglo"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Array]),
+    __metadata("design:returntype", Promise)
+], PeriodosController.prototype, "guardarPersonaPeriodoArreglo", null);
 PeriodosController = __decorate([
     (0, common_1.Controller)("periodos"),
     __metadata("design:paramtypes", [periodosServices_1.PeriodosServices])

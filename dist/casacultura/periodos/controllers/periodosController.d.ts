@@ -12,4 +12,9 @@ export declare class PeriodosController {
         datos: any;
     }>;
     guardarPersonaPeriodo(request: TallerPeriodoxPersona): Promise<TallerPeriodoxPersona>;
+    guardarPersonaPeriodoArreglo(request: TallerPeriodoxPersona[]): Promise<{
+        resultado: boolean;
+        mensaje: string;
+        datos: any;
+    }>;
 }

@@ -22,13 +22,32 @@ let TallerServices = class TallerServices {
         this.repository = repository;
     }
     async getAll() {
-        return await this.repository.find({ where: { esActivo: true } });
+        return await this.repository.find({ order: { idTaller: "asc" } });
+    }
+    async getAllActivos() {
+        return await this.repository.find({ where: { esActivo: true }, order: { idTaller: 'asc' }, relations: { categoria: true } });
+    }
+    async getById(idTaller) {
+        return await this.repository.findOne({ where: { idTaller: idTaller }, relations: { categoria: true } });
     }
     async guardar(obj) {
         const resultado = { resultado: false, mensaje: "No se pudo guardar el registor", datos: undefined };
         try {
             const data = await this.repository.save(obj);
             resultado.mensaje = "Registro guardado con exito";
+            resultado.resultado = true;
+            resultado.datos = data;
+        }
+        catch (e) {
+            console.log(e);
+        }
+        return resultado;
+    }
+    async eliminar(idTaller) {
+        const resultado = { resultado: false, mensaje: "No se puede eliminar el registro ya que tiene relacion con otros registros", datos: undefined };
+        try {
+            const data = await this.repository.delete({ idTaller: idTaller });
+            resultado.mensaje = "Registro eliminado con exito";
             resultado.resultado = true;
             resultado.datos = data;
         }
