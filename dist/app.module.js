@@ -37,7 +37,7 @@ AppModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
-                host: '172.31.5.127',
+                host: 'http://172.31.5.127',
                 port: 5432,
                 username: 'usuarioprincipal',
                 password: '12345',
