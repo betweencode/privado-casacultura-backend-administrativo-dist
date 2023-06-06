@@ -14,4 +14,5 @@ export declare class Taller {
     imagen: string;
     esActivo: boolean;
     categoria: CategoriaTaller;
+    cupo: number;
 }

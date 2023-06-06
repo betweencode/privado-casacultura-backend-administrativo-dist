@@ -70,6 +70,10 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => categoriaTaller_1.CategoriaTaller),
     __metadata("design:type", categoriaTaller_1.CategoriaTaller)
 ], Taller.prototype, "categoria", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Taller.prototype, "cupo", void 0);
 Taller = __decorate([
     (0, typeorm_1.Entity)()
 ], Taller);
