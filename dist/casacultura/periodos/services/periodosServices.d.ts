@@ -1,3 +1,4 @@
+import { Usuarios } from './../../../administracion/usuarios/models/Usuarios';
 import { PersonasServices } from './../../personas/services/personas.services';
 import { Repository } from "typeorm";
 import { Periodos } from "../models/periodo";
@@ -15,7 +16,7 @@ export declare class PeriodosServices {
         datos: any;
     }>;
     guardarDatosAlumnoTaller(periodoxPersona: TallerPeriodoxPersona): Promise<TallerPeriodoxPersona>;
-    guardarDatosAlumnoTallerArreglo(periodoxPersona: TallerPeriodoxPersona[]): Promise<{
+    guardarDatosAlumnoTallerArreglo(usuario: Usuarios, periodoxPersona: TallerPeriodoxPersona[]): Promise<{
         resultado: boolean;
         mensaje: string;
         datos: any;

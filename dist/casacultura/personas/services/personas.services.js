@@ -31,6 +31,11 @@ let PersonasServices = class PersonasServices {
         const personasPorPeriodo = tablaDetalle && tablaDetalle.personas ? tablaDetalle.personas : [];
         return personasPorPeriodo;
     }
+    async getTalleresPorPeriodoPersonaIdPersona(usuario, idPersona) {
+        const tablaDetalle = await this.repositoryUsuarios.findOne({ where: { correo: usuario, personas: { idPersona: idPersona, detallePeriodoPersonas: { periodos: { esActivo: true } } } }, relations: { personas: { detallePeriodoPersonas: { talleres: true } } } });
+        const personasPorPeriodo = tablaDetalle && tablaDetalle.personas ? tablaDetalle.personas : [];
+        return personasPorPeriodo;
+    }
     async getPersonasSesion(usuario) {
         const usuarioencontrado = await this.repositoryUsuarios.findOne({ where: {
                 correo: usuario

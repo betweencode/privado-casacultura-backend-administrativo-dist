@@ -13,6 +13,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PeriodosController = void 0;
+const Usuarios_1 = require("./../../../administracion/usuarios/models/Usuarios");
+const constants_1 = require("./../../../autenticacion/contants/constants");
 const common_1 = require("@nestjs/common");
 const periodosServices_1 = require("../services/periodosServices");
 const periodo_1 = require("../models/periodo");
@@ -33,8 +35,8 @@ let PeriodosController = class PeriodosController {
     async guardarPersonaPeriodo(request) {
         return await this.periodoPrd.guardarDatosAlumnoTaller(request);
     }
-    async guardarPersonaPeriodoArreglo(request) {
-        return await this.periodoPrd.guardarDatosAlumnoTallerArreglo(request);
+    async guardarPersonaPeriodoArreglo(usuario, request) {
+        return await this.periodoPrd.guardarDatosAlumnoTallerArreglo(usuario, request);
     }
 };
 __decorate([
@@ -65,9 +67,10 @@ __decorate([
 ], PeriodosController.prototype, "guardarPersonaPeriodo", null);
 __decorate([
     (0, common_1.Post)("guardarTallerArreglo"),
-    __param(0, (0, common_1.Body)()),
+    __param(0, (0, constants_1.CurrentUser)()),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Array]),
+    __metadata("design:paramtypes", [Usuarios_1.Usuarios, Array]),
     __metadata("design:returntype", Promise)
 ], PeriodosController.prototype, "guardarPersonaPeriodoArreglo", null);
 PeriodosController = __decorate([

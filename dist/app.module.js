@@ -31,6 +31,7 @@ const categoriaTaller_1 = require("./casacultura/categoriataller/models/categori
 const personas_1 = require("./casacultura/personas/models/personas");
 const core_1 = require("@nestjs/core");
 const jwt_auth_guard_1 = require("./autenticacion/services/jwt-auth.guard");
+const CatalogoEstatusTramite_1 = require("./casacultura/catalogoEstatusTramite/models/CatalogoEstatusTramite");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -43,7 +44,7 @@ AppModule = __decorate([
                 password: '12345',
                 database: 'casaculturadb',
                 entities: [Permisos_1.Permisos, Modulos_1.Modulos, Submodulos_1.Submodulos, Roles_1.Roles, RolesPermisos_1.RolesxPermisos, Usuarios_1.Usuarios, Empresas_1.Empresas, Versiones_1.Versiones, Versionesxmodulos_1.Versionesxmodulos, personas_1.Personas,
-                    categoriaTaller_1.CategoriaTaller, taller_1.Taller, periodo_1.Periodos, tallerPeriodoxpersona_1.TallerPeriodoxPersona],
+                    categoriaTaller_1.CategoriaTaller, taller_1.Taller, periodo_1.Periodos, tallerPeriodoxpersona_1.TallerPeriodoxPersona, CatalogoEstatusTramite_1.CatalogoEstatusTramite],
                 synchronize: true,
             }),
             catalogos_module_1.CatalogosModule, administracion_module_1.AdministracionModule, autenticacion_module_1.AutenticacionModule, ayuda_module_1.AyudaModule, versiones_module_1.VersionesModule, casacultura_module_1.CasaculturaModule],

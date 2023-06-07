@@ -5,6 +5,7 @@ export declare class CategoriaTallerController {
     constructor(categoriaTallerPrd: CategoriaTallerServices);
     getAll(): Promise<CategoriaTaller[]>;
     getAllActivos(): Promise<CategoriaTaller[]>;
+    getAllActivosTalleres(): Promise<CategoriaTaller[]>;
     getById(numero: number): Promise<CategoriaTaller>;
     guardar(request: CategoriaTaller): Promise<{
         resultado: boolean;

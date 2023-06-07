@@ -56,8 +56,20 @@ let PeriodosServices = class PeriodosServices {
         periodoxPersona.proceso = "wait";
         return await this.repositorypersonaPeriodo.save(periodoxPersona);
     }
-    async guardarDatosAlumnoTallerArreglo(periodoxPersona) {
+    async guardarDatosAlumnoTallerArreglo(usuario, periodoxPersona) {
         const resultado = { resultado: false, mensaje: "No se pudo guardar el registor", datos: undefined };
+        const personas = await this.personasPrd.getTalleresPorPeriodoPersonaIdPersona(usuario.correo, periodoxPersona[0].personas.idPersona);
+        if (personas.length > 0) {
+            if (personas[0].detallePeriodoPersonas.length >= 3) {
+                return { resultado: false, mensaje: "El alumno ya cuenta con el cupo màximo de talleres que son 3.", datos: undefined };
+            }
+            else if ((personas[0].detallePeriodoPersonas.length + periodoxPersona.length) > 3) {
+                return { resultado: false, mensaje: `El alumno cuenta actualmente con ${personas[0].detallePeriodoPersonas.length} talleres, favor de elegir el taller o talleres faltantes`, datos: undefined };
+            }
+        }
+        else if (periodoxPersona.length > 3) {
+            return { resultado: false, mensaje: `Se excedio el límite de talleres elegidos, son 3 máximo por alumno.`, datos: undefined };
+        }
         const periodo = await this.repository.findOne({ where: { esActivo: true } });
         periodoxPersona.forEach(control => {
             control.periodos = periodo;

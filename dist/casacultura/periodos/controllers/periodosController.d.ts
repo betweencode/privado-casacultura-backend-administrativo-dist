@@ -1,3 +1,4 @@
+import { Usuarios } from './../../../administracion/usuarios/models/Usuarios';
 import { PeriodosServices } from "../services/periodosServices";
 import { Periodos } from "../models/periodo";
 import { TallerPeriodoxPersona } from "../models/tallerPeriodoxpersona";
@@ -12,7 +13,7 @@ export declare class PeriodosController {
         datos: any;
     }>;
     guardarPersonaPeriodo(request: TallerPeriodoxPersona): Promise<TallerPeriodoxPersona>;
-    guardarPersonaPeriodoArreglo(request: TallerPeriodoxPersona[]): Promise<{
+    guardarPersonaPeriodoArreglo(usuario: Usuarios, request: TallerPeriodoxPersona[]): Promise<{
         resultado: boolean;
         mensaje: string;
         datos: any;

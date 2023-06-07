@@ -12,11 +12,12 @@ const common_1 = require("@nestjs/common");
 const categoria_module_1 = require("./categoriataller/categoria.module");
 const taller_module_1 = require("./taller/taller.module");
 const periodos_module_1 = require("./periodos/periodos.module");
+const catalogoEstatusTramite_module_1 = require("./catalogoEstatusTramite/catalogoEstatusTramite.module");
 let CasaculturaModule = class CasaculturaModule {
 };
 CasaculturaModule = __decorate([
     (0, common_1.Module)({
-        imports: [categoria_module_1.CategoriaTallerModule, taller_module_1.TallerModule, periodos_module_1.PeridosModule, personas_module_1.PersonasModule]
+        imports: [categoria_module_1.CategoriaTallerModule, taller_module_1.TallerModule, periodos_module_1.PeridosModule, personas_module_1.PersonasModule, catalogoEstatusTramite_module_1.CatalogoEstatusTramiteModule]
     })
 ], CasaculturaModule);
 exports.CasaculturaModule = CasaculturaModule;

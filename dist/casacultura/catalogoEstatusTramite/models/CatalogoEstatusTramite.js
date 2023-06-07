@@ -9,34 +9,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CategoriaTaller = void 0;
-const taller_1 = require("./../../taller/models/taller");
+exports.CatalogoEstatusTramite = void 0;
 const typeorm_1 = require("typeorm");
-let CategoriaTaller = class CategoriaTaller {
+let CatalogoEstatusTramite = class CatalogoEstatusTramite {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: "id_estatus" }),
     __metadata("design:type", Number)
-], CategoriaTaller.prototype, "idCategoriaTaller", void 0);
+], CatalogoEstatusTramite.prototype, "idEstatusTramite", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], CategoriaTaller.prototype, "nombre", void 0);
+], CatalogoEstatusTramite.prototype, "nombre", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: "" }),
+    __metadata("design:type", String)
+], CatalogoEstatusTramite.prototype, "descripcion", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], CategoriaTaller.prototype, "especialidad", void 0);
+], CatalogoEstatusTramite.prototype, "codigo", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ default: true }),
+    (0, typeorm_1.Column)({ name: "codigo_color", nullable: true }),
+    __metadata("design:type", String)
+], CatalogoEstatusTramite.prototype, "codigoColor", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: "es:actuvi", default: true }),
     __metadata("design:type", Boolean)
-], CategoriaTaller.prototype, "esActivo", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => taller_1.Taller, taller => taller.categoria),
-    (0, typeorm_1.JoinColumn)({ name: "id_taller" }),
-    __metadata("design:type", Array)
-], CategoriaTaller.prototype, "talleres", void 0);
-CategoriaTaller = __decorate([
-    (0, typeorm_1.Entity)()
-], CategoriaTaller);
-exports.CategoriaTaller = CategoriaTaller;
-//# sourceMappingURL=categoriaTaller.js.map
+], CatalogoEstatusTramite.prototype, "esActivo", void 0);
+CatalogoEstatusTramite = __decorate([
+    (0, typeorm_1.Entity)({ name: "catalogo_estatus_tramite" })
+], CatalogoEstatusTramite);
+exports.CatalogoEstatusTramite = CatalogoEstatusTramite;
+//# sourceMappingURL=CatalogoEstatusTramite.js.map

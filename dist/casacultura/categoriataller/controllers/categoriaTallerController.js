@@ -26,6 +26,9 @@ let CategoriaTallerController = class CategoriaTallerController {
     async getAllActivos() {
         return await this.categoriaTallerPrd.getAllActivos();
     }
+    async getAllActivosTalleres() {
+        return await this.categoriaTallerPrd.getAllActivoswithCategory();
+    }
     async getById(numero) {
         return await this.categoriaTallerPrd.getById(numero);
     }
@@ -48,6 +51,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], CategoriaTallerController.prototype, "getAllActivos", null);
+__decorate([
+    (0, common_1.Get)("activos/talleres"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CategoriaTallerController.prototype, "getAllActivosTalleres", null);
 __decorate([
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),

@@ -7,6 +7,7 @@ export declare class PersonasServices {
     constructor(repository: Repository<Personas>, repositoryUsuarios: Repository<Usuarios>);
     getAll(): Promise<Personas[]>;
     getTalleresPorPeriodoPersona(usuario: string): Promise<Personas[]>;
+    getTalleresPorPeriodoPersonaIdPersona(usuario: string, idPersona: number): Promise<Personas[]>;
     getPersonasSesion(usuario: string): Promise<Personas[]>;
     guardarPersona(username: string, persona: Personas): Promise<Personas>;
     getPersonaById(idPersona: number): Promise<Personas>;

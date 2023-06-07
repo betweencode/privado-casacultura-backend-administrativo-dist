@@ -27,6 +27,9 @@ let CategoriaTallerServices = class CategoriaTallerServices {
     async getAllActivos() {
         return await this.repository.find({ order: { idCategoriaTaller: 'asc' }, where: { esActivo: true } });
     }
+    async getAllActivoswithCategory() {
+        return await this.repository.find({ order: { idCategoriaTaller: 'asc' }, where: { esActivo: true }, relations: { talleres: true } });
+    }
     async getById(idtaller) {
         return await this.repository.findOne({ where: { idCategoriaTaller: idtaller } });
     }
