@@ -42,6 +42,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AutenticacionController.prototype, "login", null);
 __decorate([
+    (0, constants_1.Public)(),
     (0, common_1.Post)("register"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),

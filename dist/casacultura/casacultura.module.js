@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CasaculturaModule = void 0;
+const serviciosexternos_module_1 = require("./../serviciosexternos/serviciosexternos.module");
 const personas_module_1 = require("./personas/personas.module");
 const common_1 = require("@nestjs/common");
 const categoria_module_1 = require("./categoriataller/categoria.module");
@@ -17,7 +18,7 @@ let CasaculturaModule = class CasaculturaModule {
 };
 CasaculturaModule = __decorate([
     (0, common_1.Module)({
-        imports: [categoria_module_1.CategoriaTallerModule, taller_module_1.TallerModule, periodos_module_1.PeridosModule, personas_module_1.PersonasModule, catalogoEstatusTramite_module_1.CatalogoEstatusTramiteModule]
+        imports: [categoria_module_1.CategoriaTallerModule, taller_module_1.TallerModule, periodos_module_1.PeridosModule, personas_module_1.PersonasModule, catalogoEstatusTramite_module_1.CatalogoEstatusTramiteModule, serviciosexternos_module_1.ServiciosExternosModule]
     })
 ], CasaculturaModule);
 exports.CasaculturaModule = CasaculturaModule;

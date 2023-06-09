@@ -18,10 +18,12 @@ const Usuarios_1 = require("./../../../administracion/usuarios/models/Usuarios")
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
+const AwsS3Comunicacion_services_1 = require("../../../serviciosexternos/services/AwsS3Comunicacion.services");
 let PersonasServices = class PersonasServices {
-    constructor(repository, repositoryUsuarios) {
+    constructor(repository, repositoryUsuarios, s3Provices) {
         this.repository = repository;
         this.repositoryUsuarios = repositoryUsuarios;
+        this.s3Provices = s3Provices;
     }
     async getAll() {
         return await this.repository.find();
@@ -59,7 +61,8 @@ PersonasServices = __decorate([
     __param(0, (0, typeorm_1.InjectRepository)(personas_1.Personas)),
     __param(1, (0, typeorm_1.InjectRepository)(Usuarios_1.Usuarios)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
-        typeorm_2.Repository])
+        typeorm_2.Repository,
+        AwsS3Comunicacion_services_1.AwsS3ComunicacionServices])
 ], PersonasServices);
 exports.PersonasServices = PersonasServices;
 //# sourceMappingURL=personas.services.js.map
