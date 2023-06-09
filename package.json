@@ -28,7 +28,6 @@
     "@nestjs/jwt": "^9.0.0",
     "@nestjs/passport": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
-    "aws-sdk": "^2.1393.0",
     "hbs": "^4.2.0",
     "mysql": "^2.18.1",
     "passport": "^0.6.0",
